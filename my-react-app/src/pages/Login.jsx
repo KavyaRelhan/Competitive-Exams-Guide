@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import {ToastContainer} from 'react-toastify'
 import { handleError, handleSuccess } from "../utils"
+// import '../styles/login.css'
 
 function Login(){
 
@@ -58,6 +59,15 @@ function Login(){
         }
     }
 
+    
+    // const [password, setPassword] = useState('');
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    
+    // Toggle password visibility
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible(!isPasswordVisible);
+    };
+
     return (
         <div className="container">
             <h1>Login</h1>
@@ -76,7 +86,8 @@ function Login(){
                     <label htmlFor="password">Password</label>
                     <input
                         onChange={handleChange}
-                        type="text"
+                        type={isPasswordVisible ? 'text' : 'password'}
+
                         name="password"
                         placeholder="Enter Password"
                         value={loginInfo.password}
