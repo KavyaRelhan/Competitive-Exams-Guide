@@ -1,0 +1,44 @@
+.exams-directory {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .exam-category-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .exam-category-list li {
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  
+  .exam-category-list li.active {
+    font-weight: bold;
+    color: #4f46e5;
+  }
+  
+  .exams-content {
+    flex: 1;
+  }
+  
+  .exam-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .exam-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .exam-detail {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
