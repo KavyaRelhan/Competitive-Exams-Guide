@@ -1,0 +1,53 @@
+.container {
+    margin: 20px 0;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .articleLink {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .articleLink:hover {
+    text-decoration: underline;
+  }
+  
+  .removeButton {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .removeButton:hover {
+    background-color: #ff1a1f;
+  }
+  
+  .noFavorites {
+    color: #888;
+    font-style: italic;
+  }
+  
