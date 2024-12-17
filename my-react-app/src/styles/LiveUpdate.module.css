@@ -86,3 +86,20 @@
     vertical-align: bottom;
     margin-left: 4px;
   }
+
+  .favoriteButton {
+    
+    /* background: none; */
+    border: none;
+    /* background-color: ; */
+    font-size: 30px;
+    cursor: pointer;
+    color: grey;
+    transition: color 0.3s ease;
+  }
+  
+  .favoriteButton.active {
+    color: black; /* Highlight color for favorites */
+  }
+  
+  
