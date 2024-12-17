@@ -15,7 +15,14 @@ const userSchema = new Schema({
     password:{
         type:String,
         required:true
-    }
+    },
+    favorites: [
+        {
+            title: { type: String, required: true },
+            url: { type: String, required: true },
+            source: { type: Object }, 
+        },
+    ],
 })
 
 const userModel = mongoose.model('users',userSchema);
