@@ -118,14 +118,14 @@ const LiveUpdates = () => {
                 >
                   {article.title} - <em>{article.source.name}</em>
                 </a>
-                <button
+                {<button
                   onClick={() => toggleFavorite(article)}
                   className={`${styles.favoriteButton} ${
                     isFavorite ? styles.active : ''
                   }`}
                 >
                   {isFavorite ? '★' : '☆'}
-                </button>
+                </button>}
               </li>
             );
           })}
