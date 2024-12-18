@@ -6,27 +6,27 @@ import Homepage from './pages/Homepage'
 import ExamsDirectory from './pages/ExamsDirectory'
 import Profile from './pages/Profile'
 // import Home from './pages/Home'
-// import RefreshHandler from './Components/RefreshHandler'
+import RefreshHandler from './pages/RefreshHandler'
 
 
 function App() {
 
-  // const [isAuthenticated , setIsAuthenticated] = useState(false)
-  // const PrivateRoute = ({element})=>{
-  //   return isAuthenticated? element : <Navigate to="/login" />
-  // }
+  const [isAuthenticated , setIsAuthenticated] = useState(false)
+  const PrivateRoute = ({element})=>{
+    return isAuthenticated? element : <Navigate to="/login" />
+  }
 
   return (
     <>
-    {/* <RefreshHandler setIsAuthenticated={setIsAuthenticated}/> */}
+    <RefreshHandler setIsAuthenticated={setIsAuthenticated}/>
       <Routes>
-        <Route path='/' element={<Navigate to="/login"/>}/>
+        <Route path='/' element={<Navigate to="/home"/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        {/* <Route path='/home' element={<PrivateRoute element={<Home/>}/>}/> */}
+        <Route path='/profile' element={<PrivateRoute element={<Profile/>}/>}/>
         <Route path='/exam-directory' element={<ExamsDirectory/>}/>
-        <Route path='/home' element={<Homepage/>}/>
-        <Route path='/profile' element={<Profile/>} />
+        <Route path='/home' element={<Homepage isAuthenticated={isAuthenticated} />}/>
+        {/* <Route path='/profile' element={<Profile/>} /> */}
       </Routes>
     </>
   )

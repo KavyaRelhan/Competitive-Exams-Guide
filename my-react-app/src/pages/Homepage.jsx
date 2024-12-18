@@ -5,11 +5,13 @@ import '../styles/Homepage.css';
 import Navbar from '../components/Navbar';
 import LiveUpdates from '../components/LiveUpdates';
 
-const Homepage = () => {
+const Homepage = ({isAuthenticated}) => {
   return (
     <div className="homepage">
       <HeroBanner />
-      <Navbar/>
+      <Navbar
+        isAuthenticated={isAuthenticated}
+      />
       <LiveUpdates />
       <Announcements />
     </div>
