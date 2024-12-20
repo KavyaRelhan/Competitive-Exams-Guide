@@ -23,8 +23,8 @@ function App() {
         <Route path='/' element={<Navigate to="/home"/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<Signup/>}/>
-        <Route path='/profile' element={<PrivateRoute element={<Profile/>}/>}/>
-        <Route path='/exam-directory' element={<ExamsDirectory/>}/>
+        <Route path='/profile' element={<PrivateRoute element={<Profile  isAuthenticated={isAuthenticated}/>}/>}/>
+        <Route path='/exam-directory' element={<ExamsDirectory isAuthenticated={isAuthenticated}/>}/>
         <Route path='/home' element={<Homepage isAuthenticated={isAuthenticated} />}/>
         {/* <Route path='/profile' element={<Profile/>} /> */}
       </Routes>

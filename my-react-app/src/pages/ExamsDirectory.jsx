@@ -7,7 +7,7 @@ import '../styles/ExamsDirectory.css';
 import HeroBanner from '../components/HeroBanner';
 import Navbar from '../components/Navbar';
 
-const ExamsDirectory = () => {
+const ExamsDirectory = ({isAuthenticated}) => {
   const categories = [...new Set(examsData.map((exam) => exam.category))];
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [selectedExam, setSelectedExam] = useState(null);
@@ -22,7 +22,9 @@ const ExamsDirectory = () => {
   return (
     <>
     <HeroBanner/>
-    <Navbar/>
+    <Navbar
+      isAuthenticated={isAuthenticated}
+    />
     <div className="exams-directory">
       <ExamCategoryList
         categories={categories}
