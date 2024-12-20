@@ -83,7 +83,7 @@ const LiveUpdates = () => {
     } catch (error) {
       console.error('Error toggling favorite:', error);
       // alert('Failed to update favorites');
-      handleError('Failed to update favorites');
+      handleError('Please Signup or Login to add favorites');
     }
   };
 
