@@ -9,7 +9,7 @@ import styles from '../styles/Profile.module.css';
 import HeroBanner from '../components/HeroBanner';
 import Navbar from '../components/Navbar';
 
-function Profile() {
+function Profile({isAuthenticated}) {
   const [loggedInUser, setLoggedInUser] = useState('');
   const [loggedUserName , setLoggedUserName] = useState('');
   const [favorites, setFavorites] = useState([]);
@@ -68,7 +68,9 @@ function Profile() {
   return (
     <>
     <HeroBanner/>
-    <Navbar/>
+    <Navbar
+      isAuthenticated ={isAuthenticated}
+    />
     <div className={styles.container}>
       <h1 className={styles.header}>Welcome {loggedUserName}</h1>
       <button onClick={handleLogout} className={styles.logoutButton}>
