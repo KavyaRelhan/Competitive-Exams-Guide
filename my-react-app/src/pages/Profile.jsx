@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { handleSuccess } from '../utils';
+import { handleError, handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import FavoriteNews from '../components/FavoriteNews';
@@ -58,10 +58,10 @@ function Profile({isAuthenticated}) {
         data: { email: loggedInUser, url },
       });
       setFavorites(favorites.filter((article) => article.url !== url));
-      alert('Favorite removed successfully!');
+      handleSuccess('Favorite removed successfully!');
     } catch (error) {
       console.error('Error removing favorite:', error);
-      alert('Failed to remove favorite');
+      handleError('Failed to remove favorite');
     }
   };
 

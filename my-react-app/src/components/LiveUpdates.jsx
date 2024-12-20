@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/LiveUpdate.module.css';
+import { ToastContainer } from 'react-toastify';
+import { handleError, handleSuccess } from "../utils"
 
 const LiveUpdates = () => {
   const [news, setNews] = useState([]);
@@ -68,7 +70,7 @@ const LiveUpdates = () => {
           data: { email: userEmail, url: article.url },
         });
         setFavorites(favorites.filter((fav) => fav.url !== article.url));
-        alert('Article removed from favorites!');
+        handleSuccess('Article removed from favorites!');
       } else {
         // Add to favorites
         await axios.post('http://localhost:8080/auth/favorites', {
@@ -76,11 +78,12 @@ const LiveUpdates = () => {
           article,
         });
         setFavorites([...favorites, article]);
-        alert('Article added to favorites!');
+        handleSuccess('Article added to favorites!');
       }
     } catch (error) {
       console.error('Error toggling favorite:', error);
-      alert('Failed to update favorites');
+      // alert('Failed to update favorites');
+      handleError('Failed to update favorites');
     }
   };
 
@@ -131,6 +134,7 @@ const LiveUpdates = () => {
           })}
         </ul>
       </div>
+      <ToastContainer/>
     </div>
   );
 };
