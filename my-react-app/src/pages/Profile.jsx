@@ -6,6 +6,8 @@ import axios from 'axios';
 import FavoriteNews from '../components/FavoriteNews';
 // import FavoriteNews from '../components/FavoriteNews'; // Import the new component
 import styles from '../styles/Profile.module.css';
+import HeroBanner from '../components/HeroBanner';
+import Navbar from '../components/Navbar';
 
 function Profile() {
   const [loggedInUser, setLoggedInUser] = useState('');
@@ -14,18 +16,18 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const email = localStorage.getItem('loggedInUser');
-    setLoggedInUser(email);
+    const userName = localStorage.getItem('loggedUserName');
+    setLoggedInUser(userName);
 
-    if (email) {
-      fetchFavorites(email);
+    if (userName) {
+      fetchFavorites(userName);
     }
   }, []);
 
-  const fetchFavorites = async (email) => {
+  const fetchFavorites = async (userName) => {
     try {
       const response = await axios.get('http://localhost:8080/auth/favorites', {
-        params: { email },
+        params: { userName },
       });
       setFavorites(response.data.favorites);
     } catch (error) {
@@ -46,7 +48,7 @@ function Profile() {
   const handleRemoveFavorite = async (url) => {
     try {
       await axios.delete('http://localhost:8080/auth/favorites', {
-        data: { email: loggedInUser, url },
+        data: { userName: loggedInUser, url },
       });
       setFavorites(favorites.filter((article) => article.url !== url));
       alert('Favorite removed successfully!');
@@ -57,6 +59,9 @@ function Profile() {
   };
 
   return (
+    <>
+    <HeroBanner/>
+    <Navbar/>
     <div className={styles.container}>
       <h1 className={styles.header}>Welcome {loggedInUser}</h1>
       <button onClick={handleLogout} className={styles.logoutButton}>
@@ -67,6 +72,7 @@ function Profile() {
       {/* Use FavoriteNews Component */}
       <FavoriteNews favorites={favorites} onRemove={handleRemoveFavorite} />
     </div>
+    </>
   );
 }
 
