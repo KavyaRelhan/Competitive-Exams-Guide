@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { handleSuccess } from '../utils';
 import { ToastContainer } from 'react-toastify';
@@ -16,18 +16,25 @@ function Profile() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const userName = localStorage.getItem('loggedUserName');
-    setLoggedInUser(userName);
+    const email = localStorage.getItem('loggedInUser');
+    setLoggedInUser(email);
 
-    if (userName) {
-      fetchFavorites(userName);
+    if (email) {
+      fetchFavorites(email);
     }
   }, []);
 
-  const fetchFavorites = async (userName) => {
+  useEffect(() => {
+    const Username = localStorage.getItem('loggedUserName');
+    setLoggedUserName(Username);
+
+    
+  }, []);
+
+  const fetchFavorites = async (email) => {
     try {
       const response = await axios.get('http://localhost:8080/auth/favorites', {
-        params: { userName },
+        params: { email },
       });
       setFavorites(response.data.favorites);
     } catch (error) {
@@ -48,7 +55,7 @@ function Profile() {
   const handleRemoveFavorite = async (url) => {
     try {
       await axios.delete('http://localhost:8080/auth/favorites', {
-        data: { userName: loggedInUser, url },
+        data: { email: loggedInUser, url },
       });
       setFavorites(favorites.filter((article) => article.url !== url));
       alert('Favorite removed successfully!');
@@ -63,7 +70,7 @@ function Profile() {
     <HeroBanner/>
     <Navbar/>
     <div className={styles.container}>
-      <h1 className={styles.header}>Welcome {loggedInUser}</h1>
+      <h1 className={styles.header}>Welcome {loggedUserName}</h1>
       <button onClick={handleLogout} className={styles.logoutButton}>
         Logout
       </button>
