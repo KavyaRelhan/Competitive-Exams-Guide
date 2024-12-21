@@ -1,44 +1,108 @@
+html, body{
+  margin: 0;
+  padding : 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+*{
+  box-sizing: border-box;
+}
+
 .exams-directory {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Wrap cards on smaller screens */
+  gap: 150px; /* Keeps gaps between cards */
+  padding: 30px;
+  background-color: #f9fafb;
+  /* justify-content: center; */
+  width: 100%;  
+  box-sizing: border-box;
+}
+
+.exam-category-list{
+  max-width: 100%;
+  /* margin: 0; */
+}
+.exam-category-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.exam-category-list li {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-size: larger;
+}
+
+.exam-category-list li.active {
+  font-weight: bold;
+  color: #1e3a8a;
+  background-color: #e5e7eb; /* Light grey background */
+}
+
+.exam-category-list li:hover {
+  background-color: #dbeafe; /* Highlight on hover */
+}
+
+
+.exam-card {
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px; /* Adds vertical gaps between cards */
+  /* flex: 1 1 calc(33.33% - 20px);  */
+  /* max-width: calc(33.33% - 20px);  */
+}
+
+.exam-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling for "View Details" */
+.exam-card button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(45deg, #2563eb, #1d4ed8); /* Blue gradient */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.exam-card button:hover {
+  background: linear-gradient(45deg, #1d4ed8, #1e40af); /* Darker gradient on hover */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+.exam-detail {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+/* ExamsDirectory.module.css */
+@media (max-width: 768px) {
+  .exams-directory {
+    flex-direction: column; /* Stack cards vertically */
+    padding: 10px;
+    /* gap:  */
   }
-  
-  .exam-category-list ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .exam-category-list li {
-    padding: 8px 0;
-    cursor: pointer;
-  }
-  
-  .exam-category-list li.active {
-    font-weight: bold;
-    color: #4f46e5;
-  }
-  
-  .exams-content {
-    flex: 1;
-  }
-  
-  .exam-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
+
   .exam-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    cursor: pointer;
+    width: 100%; /* Make cards full-width */
+    max-width: 100%;
   }
-  
-  .exam-detail {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-  
+}

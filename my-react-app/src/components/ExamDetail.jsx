@@ -1,9 +1,10 @@
 import React from 'react';
+import '../styles/ExamDetails.css'
 
 const ExamDetail = ({ exam, onClose }) => {
   return (
     <div className="exam-detail">
-      <button onClick={onClose}>Back to Exams List</button>
+      <button className='back-button' onClick={onClose}>⬅ Back to Exams List</button>
       <h2>{exam.name}</h2>
       <p><strong>Overview:</strong> {exam.overview}</p>
       <p><strong>Eligibility Criteria:</strong> {exam.eligibility}</p>
