@@ -1,13 +1,28 @@
 .homepage {
-    padding: 20px;
+    padding: 0px;
+    margin: 0px;
   }
   
   .hero-banner {
     text-align: center;
-    padding: 40px 20px;
-    background-color: #1e3a8a;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1e3a8a, #4f46e5); /* Add gradient */
     color: #ffffff;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+  
+  .hero-banner h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .hero-banner p {
+    font-size: 18px;
+    font-weight: lighter;
+  }
+  
   
   .search-bar {
     margin: 20px 0;
