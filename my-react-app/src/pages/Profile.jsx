@@ -73,10 +73,6 @@ function Profile({isAuthenticated}) {
     />
     <div className={styles.container}>
       <h1 className={styles.header}>Welcome {loggedUserName}</h1>
-      <button onClick={handleLogout} className={styles.logoutButton}>
-        Logout
-      </button>
-      <ToastContainer />
 
       {/* Use FavoriteNews Component */}
       <FavoriteNews favorites={favorites} onRemove={handleRemoveFavorite} />

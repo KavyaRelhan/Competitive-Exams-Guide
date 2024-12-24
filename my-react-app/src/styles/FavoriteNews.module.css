@@ -40,10 +40,11 @@
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
+    font-size: 20px;
   }
   
   .removeButton:hover {
-    background-color: #ff1a1f;
+    background-color: #cf7879;
   }
   
   .noFavorites {

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/FavoriteNews.module.css';
+import { MdDelete } from "react-icons/md";
 
 const FavoriteNews = ({ favorites, onRemove }) => {
   return (
@@ -23,7 +24,7 @@ const FavoriteNews = ({ favorites, onRemove }) => {
                 onClick={() => onRemove(article.url)}
                 className={styles.removeButton}
               >
-                ❌ Remove
+                <MdDelete />
               </button>
             </li>
           ))}
