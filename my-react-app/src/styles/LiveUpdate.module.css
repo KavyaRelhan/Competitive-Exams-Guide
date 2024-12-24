@@ -102,4 +102,33 @@
     color: black; /* Highlight color for favorites */
   }
   
+  .filterDropdown {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .filterDropdown:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 8px rgba(26, 115, 232, 0.5);
+    outline: none;
+  }
+  
+  .filterDropdown:hover {
+    background-color: #e9f5ff;
+  }
+  
+  .filterDropdown option {
+    font-size: 1em;
+    color: #333;
+  }
   
