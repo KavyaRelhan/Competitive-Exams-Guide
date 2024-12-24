@@ -8,6 +8,18 @@
   color: white;
 }
 
+.home.active{
+  color: #007BFF;
+}
+
+.exam-directory.active{
+  color: #007BFF;
+}
+
+.login.active{
+  color: #007BFF;
+}
+
 .active-link {
   text-decoration: underline;
   font-weight: bold;
