@@ -64,19 +64,19 @@ const Navbar = ({ isAuthenticated }) => {
     <nav className="navbar">
       <NavLink 
         to="/home" 
-        className={({ isActive }) => isActive ? 'active-link' : 'navbar-link'}
+        className='home'
       >
         Home
       </NavLink>
       <NavLink 
         to="/exam-directory" 
-        className={({ isActive }) => isActive ? 'active-link' : 'navbar-link'}
+        className='exam-directory'
       >
         Exam Directory
       </NavLink>
       <NavLink 
         to={isAuthenticated ? "/profile" : "/login"} 
-        className={({ isActive }) => isActive ? 'active-link' : 'navbar-link'}
+        className='login'
       >
         {isAuthenticated ? 'Profile' : 'Login'}
       </NavLink>
