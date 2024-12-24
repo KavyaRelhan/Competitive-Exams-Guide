@@ -1,4 +1,4 @@
-/* login.css */
+login.css
 
 .background{
   width: 100%;
@@ -105,6 +105,117 @@
 .signup-link-wrapper {
   text-align: center;
   font-size: 14px;
+  color: #666;
+}
+
+.signup-link {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  max-width: 500px; /* Increased width */
+  min-width: 500px; /* Increased width */
+  min-height: 450px; /* Increased height */
+  margin: 0 auto;
+  padding: 30px; /* Adjusted padding for better spacing */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.login-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 28px; /* Slightly larger font */
+  font-weight: bold;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 25px; /* Increased spacing between form groups */
+}
+
+.form-label {
+  margin-bottom: 8px;
+  font-size: 16px; /* Larger font */
+  font-weight: bold;
+  color: #555;
+  display: block;
+}
+
+.form-input {
+  width: 95%;
+  padding: 12px; /* Increased padding for inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Larger font size for better readability */
+  margin-right: 2rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3); /* Slightly stronger focus effect */
+}
+
+.password-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password-btn {
+  margin-left: 8px;
+  margin-right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.toggle-password-btn:hover {
+  text-decoration: underline;
+}
+
+.login-button {
+  padding: 12px; /* Increased button size */
+  background-color: #007bff;
+  color: #fff;
+  font-size: 18px; /* Larger button text */
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-link-wrapper {
+  text-align: center;
+  font-size: 16px; /* Slightly larger text */
   color: #666;
 }
 

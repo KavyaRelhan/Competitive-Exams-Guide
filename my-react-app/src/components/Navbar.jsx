@@ -64,7 +64,7 @@ const Navbar = ({ isAuthenticated }) => {
     <nav className="navbar">
       <NavLink 
         to="/home" 
-        className='home'
+        className='n home'
       >
         Home
       </NavLink>
@@ -76,12 +76,12 @@ const Navbar = ({ isAuthenticated }) => {
       </NavLink>
       <NavLink 
         to={isAuthenticated ? "/profile" : "/login"} 
-        className='login'
+        className='n login'
       >
         {isAuthenticated ? 'Profile' : 'Login'}
       </NavLink>
       {isAuthenticated && (
-        <button className="logout" onClick={handleLogout}>
+        <button className="n logout" onClick={handleLogout}>
           Log out <IoIosLogOut />
         </button>
       )}

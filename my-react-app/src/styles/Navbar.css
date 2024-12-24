@@ -6,31 +6,32 @@
   padding: 15px 30px;
   background-color: #1f2937; /* Darker background for a modern look */
   color: white;
+  font-size: large;
+}
+
+.home{
+  font-size: 18px;
 }
 
 .home.active{
-  color: #007BFF;
+  color: #8caff4;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .exam-directory.active{
-  color: #007BFF;
+  color: #8caff4;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .login.active{
-  color: #007BFF;
-}
-
-.active-link {
+  color: #8caff4;
   text-decoration: underline;
   font-weight: bold;
-  color: #007BFF;
-}
-
-.navbar-link {
-  text-decoration: none;
-  color: #000;
-  font-size: 1rem;
-  transition: color 0.3s ease;
+  font-size: 20px;
 }
 
 .navbar a {
@@ -38,7 +39,7 @@
   color: #f3f4f6; /* Softer white color for better contrast */
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   transition: color 0.3s ease;
 }
 
@@ -53,7 +54,7 @@
   background-color: #1f2937;
   color: #8caff4;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 17px;
   /* display: flex; */
   /* align-items: center; */
   /* justify-content: center; */
