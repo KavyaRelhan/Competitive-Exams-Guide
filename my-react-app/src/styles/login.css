@@ -1,25 +1,28 @@
-
+/* login.css */
 .background {
-  width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(to bottom, lightblue, darkblue);
 }
 
 .login-container {
-  position: absolute;
-
-  max-width: 500px; 
-  min-width: 500px; 
-  min-height: 450px; 
-  margin: 0 auto;
-  padding: 30px; 
+  position: relative;
+  width: 500px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  z-index: 2;
+  text-align: center; /* Center content inside */
 }
+
+
 
 .login-title {
   text-align: center;
