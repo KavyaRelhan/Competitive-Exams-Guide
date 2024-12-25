@@ -5,16 +5,18 @@ const Canvas = () => {
     const canvasRef = useRef(null);
     const bubbles = useRef([]);
     const examNames = [
-        "JEE Advanced",
-        "JEE Main",
+        "JEE ",
         "NEET",
         "GATE",
         "CAT",
-        "UPSC CSE",
-        "SSC CGL",
-        "IBPS PO",
+        "UPSC",
+        "SSC",
+        "IBPS ",
         "CLAT",
         "NDA",
+        "NTSE",
+        "CA",
+        "CUET"
         
     ];
 
@@ -29,21 +31,22 @@ const Canvas = () => {
             ripples.push({ x, y, radius: 0, opacity: 1 });
         };
 
-        const createBubble = () => {
-            const randomExam = examNames[Math.floor(Math.random() * examNames.length)];
-            const radius = Math.random() * 20 + 10; // Calculate radius first
-        
-            bubbles.current.push({
-                x: Math.random() * (width - 2 * radius) + radius, // Ensure bubble fits within screen width
-                y: Math.random() * (height - 2 * radius) + radius, // Ensure bubble fits within screen height
-                radius: radius,
-                speedX: (Math.random() - 0.5) * 2, // Random horizontal speed
-                speedY: (Math.random() - 0.5) * 2, // Random vertical speed
-                opacity: Math.random() * 0.5 + 0.5,
-                text: randomExam,
+        const createBubbles = () => {
+            bubbles.current = examNames.map((exam) => {
+                const radius =  45; // Larger bubble size
+                return {
+                    x: Math.random() * (width - 2 * radius) + radius, // Position within screen bounds
+                    y: Math.random() * (height - 2 * radius) + radius,
+                    radius,
+                    speedX: (Math.random() - 0.5) * 0.5, // Slower speed
+                    speedY: (Math.random() - 0.5) * 0.5,
+                    // speedX:0.1,
+                    // speedY:0.1,
+                    opacity: Math.random() * 0.5 + 0.5,
+                    text: exam,
+                };
             });
         };
-        
 
         const drawRipples = () => {
             ripples.forEach((ripple, index) => {
@@ -66,21 +69,21 @@ const Canvas = () => {
             bubbles.current.forEach((bubble) => {
                 bubble.x += bubble.speedX;
                 bubble.y += bubble.speedY;
-        
+
                 // Boundary collision detection and rebound logic
                 if (bubble.x - bubble.radius <= 0 || bubble.x + bubble.radius >= width) {
-                    bubble.speedX = -bubble.speedX; // Reverse horizontal direction
+                    bubble.speedX = -bubble.speedX;
                 }
                 if (bubble.y - bubble.radius <= 0 || bubble.y + bubble.radius >= height) {
-                    bubble.speedY = -bubble.speedY; // Reverse vertical direction
+                    bubble.speedY = -bubble.speedY;
                 }
-        
+
                 // Draw the bubble
                 ctx.beginPath();
                 ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(0, 123, 255, ${bubble.opacity})`;
                 ctx.fill();
-        
+
                 // Draw the text
                 ctx.font = `${bubble.radius / 2}px Arial`;
                 ctx.fillStyle = "white";
@@ -88,11 +91,13 @@ const Canvas = () => {
                 ctx.fillText(bubble.text, bubble.x, bubble.y + 4);
             });
         };
-        
 
         const handleResize = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
+
+            // Recreate bubbles to fit the new dimensions
+            createBubbles();
         };
 
         const handleMouseMove = (e) => {
@@ -106,10 +111,8 @@ const Canvas = () => {
             requestAnimationFrame(animate);
         };
 
-        // Add initial bubbles
-        for (let i = 0; i < 30; i++) {
-            createBubble();
-        }
+        // Initialize bubbles
+        createBubbles();
 
         window.addEventListener("resize", handleResize);
         canvas.addEventListener("mousemove", handleMouseMove);
