@@ -15,11 +15,7 @@ const Canvas = () => {
         "IBPS PO",
         "CLAT",
         "NDA",
-        "CDS",
-        "AIIMS",
-        "BITSAT",
-        "VITEEE",
-        "MAT",
+        
     ];
 
     useEffect(() => {
