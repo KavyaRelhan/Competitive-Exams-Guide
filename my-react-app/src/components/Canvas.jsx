@@ -35,16 +35,19 @@ const Canvas = () => {
 
         const createBubble = () => {
             const randomExam = examNames[Math.floor(Math.random() * examNames.length)];
+            const radius = Math.random() * 20 + 10; // Calculate radius first
+        
             bubbles.current.push({
-                x: Math.random() * width,
-                y: Math.random() * height,
-                radius: Math.random() * 20 + 10,
+                x: Math.random() * (width - 2 * radius) + radius, // Ensure bubble fits within screen width
+                y: Math.random() * (height - 2 * radius) + radius, // Ensure bubble fits within screen height
+                radius: radius,
                 speedX: (Math.random() - 0.5) * 2, // Random horizontal speed
                 speedY: (Math.random() - 0.5) * 2, // Random vertical speed
                 opacity: Math.random() * 0.5 + 0.5,
                 text: randomExam,
             });
         };
+        
 
         const drawRipples = () => {
             ripples.forEach((ripple, index) => {
