@@ -1,27 +1,59 @@
 import React, { useEffect, useRef } from "react";
-import "../styles/Canvas.css"; // Add any additional styles if needed
+import "../styles/Canvas.css";
 
-const Canvas = ({ exams }) => {
+const Canvas = () => {
     const canvasRef = useRef(null);
-    const containerRef = useRef(null);
+    const bubbles = useRef([]);
+    const examNames = [
+        "JEE Advanced",
+        "JEE Main",
+        "NEET",
+        "GATE",
+        "CAT",
+        "UPSC CSE",
+        "SSC CGL",
+        "IBPS PO",
+        "CLAT",
+        "NDA",
+        "CDS",
+        "AIIMS",
+        "BITSAT",
+        "VITEEE",
+        "MAT",
+    ];
 
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
-        const balls = [];
         const ripples = [];
         let width = (canvas.width = window.innerWidth);
         let height = (canvas.height = window.innerHeight);
 
-        const createRipple = (x, y) => ripples.push({ x, y, radius: 0, opacity: 1 });
+        const createRipple = (x, y) => {
+            ripples.push({ x, y, radius: 0, opacity: 1 });
+        };
+
+        const createBubble = () => {
+            const randomExam = examNames[Math.floor(Math.random() * examNames.length)];
+            bubbles.current.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 20 + 10,
+                speedX: (Math.random() - 0.5) * 2, // Random horizontal speed
+                speedY: (Math.random() - 0.5) * 2, // Random vertical speed
+                opacity: Math.random() * 0.5 + 0.5,
+                text: randomExam,
+            });
+        };
 
         const drawRipples = () => {
-            ctx.clearRect(0, 0, width, height);
             ripples.forEach((ripple, index) => {
                 ripple.radius += 2;
                 ripple.opacity -= 0.02;
-                if (ripple.opacity <= 0) ripples.splice(index, 1);
-                else {
+
+                if (ripple.opacity <= 0) {
+                    ripples.splice(index, 1);
+                } else {
                     ctx.beginPath();
                     ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
                     ctx.strokeStyle = `rgba(0, 123, 255, ${ripple.opacity})`;
@@ -31,57 +63,69 @@ const Canvas = ({ exams }) => {
             });
         };
 
+        const drawBubbles = () => {
+            bubbles.current.forEach((bubble) => {
+                bubble.x += bubble.speedX;
+                bubble.y += bubble.speedY;
+        
+                // Boundary collision detection and rebound logic
+                if (bubble.x - bubble.radius <= 0 || bubble.x + bubble.radius >= width) {
+                    bubble.speedX = -bubble.speedX; // Reverse horizontal direction
+                }
+                if (bubble.y - bubble.radius <= 0 || bubble.y + bubble.radius >= height) {
+                    bubble.speedY = -bubble.speedY; // Reverse vertical direction
+                }
+        
+                // Draw the bubble
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 123, 255, ${bubble.opacity})`;
+                ctx.fill();
+        
+                // Draw the text
+                ctx.font = `${bubble.radius / 2}px Arial`;
+                ctx.fillStyle = "white";
+                ctx.textAlign = "center";
+                ctx.fillText(bubble.text, bubble.x, bubble.y + 4);
+            });
+        };
+        
+
         const handleResize = () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         };
 
-        const handleMouseMove = (e) => createRipple(e.clientX, e.clientY);
-
-        exams.forEach((exam) => {
-            const ball = document.createElement("div");
-            ball.className = "ball";
-            ball.textContent = exam;
-            containerRef.current.appendChild(ball);
-            const x = Math.random() * (width - 100);
-            const y = Math.random() * (height - 100);
-            const dx = Math.random() * 2 + 1;
-            const dy = Math.random() * 2 + 1;
-            balls.push({ element: ball, x, y, dx, dy });
-        });
-
-        const animateBalls = () => {
-            balls.forEach((ball) => {
-                ball.x += ball.dx;
-                ball.y += ball.dy;
-                if (ball.x <= 0 || ball.x + 100 >= width) ball.dx *= -1;
-                if (ball.y <= 0 || ball.y + 100 >= height) ball.dy *= -1;
-                ball.element.style.transform = `translate(${ball.x}px, ${ball.y}px)`;
-            });
-            requestAnimationFrame(animateBalls);
+        const handleMouseMove = (e) => {
+            createRipple(e.clientX, e.clientY);
         };
 
-        const animateRipples = () => {
+        const animate = () => {
+            ctx.clearRect(0, 0, width, height); // Clear canvas
             drawRipples();
-            requestAnimationFrame(animateRipples);
+            drawBubbles();
+            requestAnimationFrame(animate);
         };
+
+        // Add initial bubbles
+        for (let i = 0; i < 30; i++) {
+            createBubble();
+        }
 
         window.addEventListener("resize", handleResize);
         canvas.addEventListener("mousemove", handleMouseMove);
 
-        animateBalls();
-        animateRipples();
+        animate();
 
         return () => {
             window.removeEventListener("resize", handleResize);
             canvas.removeEventListener("mousemove", handleMouseMove);
         };
-    }, [exams]);
+    }, []);
 
     return (
         <div className="canvas-container">
             <canvas ref={canvasRef} className="ripple-background"></canvas>
-            <div className="floating-balls" ref={containerRef}></div>
         </div>
     );
 };

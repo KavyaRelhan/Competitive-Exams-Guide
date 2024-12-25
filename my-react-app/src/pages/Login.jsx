@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
@@ -50,7 +50,7 @@ function Login() {
 
     return (
         <div className="background">
-            {/*<Canvas exams={exams} /> */}
+           <Canvas exams={exams} /> 
             <div className="login-container">
                 <h1 className="login-title">Login</h1>
                 <form onSubmit={handleLogin} className="login-form">

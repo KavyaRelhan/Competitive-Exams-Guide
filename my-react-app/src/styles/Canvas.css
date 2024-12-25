@@ -1,22 +1,7 @@
+/* Canvas.css */
+/* Canvas.css */
 .canvas-container {
-    position: relative;;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: linear-gradient(to bottom, lightblue , darkblue);
-}
-
-.ripple-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.floating-balls {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -24,17 +9,29 @@
     z-index: 1;
 }
 
-.ball {
+.ripple-background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #001f3f, #00102a);
+}
+
+  
+  .ball {
     position: absolute;
     width: 100px;
     height: 100px;
     background-color: rgba(0, 123, 255, 0.7);
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-}
+    animation: bounce 5s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-50px);
+    }
+  }
+  
