@@ -38,8 +38,8 @@ const Canvas = () => {
                     x: Math.random() * (width - 2 * radius) + radius, // Position within screen bounds
                     y: Math.random() * (height - 2 * radius) + radius,
                     radius,
-                    speedX: (Math.random() - 0.5) * 0.5, // Slower speed
-                    speedY: (Math.random() - 0.5) * 0.5,
+                    speedX: (Math.random() - 0.5) * 4, // Slower speed
+                    speedY: (Math.random() - 0.5) * 4,
                     // speedX:0.1,
                     // speedY:0.1,
                     opacity: Math.random() * 0.5 + 0.5,
