@@ -118,6 +118,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
 import "../styles/login.css";
+import Canvas from "../components/Canvas";
 
 function Signup() {
     const [signupInfo, setSignupInfo] = useState({
@@ -173,6 +174,7 @@ function Signup() {
 
     return (
         <div className="background">
+        <Canvas /> 
         <div className="login-container">
             <h1 className="login-title">Signup</h1>
             <form onSubmit={handleSignup} className="login-form">

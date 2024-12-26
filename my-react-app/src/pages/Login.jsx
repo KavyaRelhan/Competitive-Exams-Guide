@@ -50,7 +50,7 @@ function Login() {
 
     return (
         <div className="background">
-           <Canvas exams={exams} /> 
+           <Canvas /> 
             <div className="login-container">
                 <h1 className="login-title">Login</h1>
                 <form onSubmit={handleLogin} className="login-form">
