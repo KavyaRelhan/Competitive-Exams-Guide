@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from '../styles/LiveUpdate.module.css';
 import { ToastContainer } from 'react-toastify';
-import { handleError, handleSuccess } from "../utils"
+import { handleError, handleSuccess } from "../utils";
+import { requestForToken, onMessageListener } from '../util/firebase';
 
 const LiveUpdates = () => {
   const [news, setNews] = useState([]);
@@ -10,8 +11,36 @@ const LiveUpdates = () => {
   const [selectedKeyword, setSelectedKeyword] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [favorites, setFavorites] = useState([]);
+  const [notification, setNotification] = useState(null);
 
   const keywords = ['JEE', 'NEET', 'CAT', 'UPSC', 'CA', 'SSC', 'CUET'];
+
+  useEffect(() => {
+    const email = localStorage.getItem('loggedInUser');
+    setUserEmail(email);
+
+    // Fetch user's favorites from the backend
+    if (email) {
+      fetchFavorites(email);
+    }
+
+    // Request FCM token on component mount
+    requestForToken().then((token) => {
+      if (token) {
+        console.log("FCM Token received:", token);
+        // Send token to backend
+        axios.post('http://localhost:8080/api/save-token', { token, email });
+      }
+    });
+
+    // Listen for incoming messages
+    onMessageListener()
+      .then((payload) => {
+        console.log("Message received: ", payload);
+        setNotification(payload.notification);
+      })
+      .catch((err) => console.error("Failed to receive message:", err));
+  }, []);
 
   useEffect(() => {
     const fetchNews = async (keyword = '') => {
@@ -30,20 +59,17 @@ const LiveUpdates = () => {
 
     const interval = setInterval(() => {
       fetchNews(selectedKeyword);
-    }, 300000);
+    }, 300000); // 5 minutes
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Clear interval on cleanup
   }, [selectedKeyword]);
 
   useEffect(() => {
-    const email = localStorage.getItem('loggedInUser');
-    setUserEmail(email);
-
-    // Fetch user's favorites from the backend
-    if (email) {
-      fetchFavorites(email);
+    if (notification) {
+      const timer = setTimeout(() => setNotification(null), 5000); // Clear notification after 5 seconds
+      return () => clearTimeout(timer);
     }
-  }, []);
+  }, [notification]);
 
   const fetchFavorites = async (email) => {
     try {
@@ -53,6 +79,7 @@ const LiveUpdates = () => {
       setFavorites(response.data.favorites);
     } catch (error) {
       console.error('Error fetching favorites:', error);
+      handleError('Failed to fetch favorites. Please try again later.');
     }
   };
 
@@ -82,14 +109,20 @@ const LiveUpdates = () => {
       }
     } catch (error) {
       console.error('Error toggling favorite:', error);
-      // alert('Failed to update favorites');
-      handleError('Please Signup or Login to add favorites');
+      handleError('Failed to update favorites. Please try again later.');
     }
   };
 
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Live Exam Updates</h2>
+
+      {notification && notification.title && notification.body && (
+        <div className={styles.notification} aria-live="polite">
+          <h4>{notification.title}</h4>
+          <p>{notification.body}</p>
+        </div>
+      )}
 
       <div className={styles.section}>
         <h3 className={styles.sectionTitle}>News</h3>
@@ -108,33 +141,37 @@ const LiveUpdates = () => {
           </select>
         </div>
 
-        <ul className={styles.list}>
-          {filteredNews.map((article, index) => {
-            const isFavorite = favorites.some((fav) => fav.url === article.url);
-            return (
-              <li key={index} className={styles.listItem}>
-                <a
-                  href={article.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.articleLink}
-                >
-                  {article.title} - <em>{article.source.name}</em>
-                </a>
-                <button
-                  onClick={() => toggleFavorite(article)}
-                  className={`${styles.favoriteButton} ${
-                    isFavorite ? styles.active : ''
-                  }`}
-                >
-                  {isFavorite ? '★' : '☆'}
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        {filteredNews.length === 0 ? (
+          <p className={styles.noData}>No articles available for the selected keyword.</p>
+        ) : (
+          <ul className={styles.list}>
+            {filteredNews.map((article, index) => {
+              const isFavorite = favorites.some((fav) => fav.url === article.url);
+              return (
+                <li key={index} className={styles.listItem}>
+                  <a
+                    href={article.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.articleLink}
+                  >
+                    {article.title} - <em>{article.source.name}</em>
+                  </a>
+                  <button
+                    onClick={() => toggleFavorite(article)}
+                    className={`${styles.favoriteButton} ${
+                      isFavorite ? styles.active : ''
+                    }`}
+                  >
+                    {isFavorite ? '★' : '☆'}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        )}
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };
