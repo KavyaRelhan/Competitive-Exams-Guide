@@ -37,32 +37,3 @@ app.get('/api/news', async (req, res) => {
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-// Endpoint for Twitter updates with filtering and sorting
-// app.get('/api/twitter', async (req, res) => {
-//   const { q } = req.query; // Extract query param
-
-//   try {
-//     const response = await axios.get(
-//       https://api.twitter.com/2/tweets/search/recent,
-//       {
-//         params: {
-//           query: q || 'JEE OR NEET',
-//           "tweet.fields": 'created_at,public_metrics',
-//         },
-//         headers: {
-//           Authorization: Bearer ${TWITTER_BEARER_TOKEN},
-//         },
-//       }
-//     );
-//     // Sort by engagement (likes + retweets)
-//     const sortedTweets = response.data.data.sort((a, b) => {
-//       const aEngagement = a.public_metrics.like_count + a.public_metrics.retweet_count;
-//       const bEngagement = b.public_metrics.like_count + b.public_metrics.retweet_count;
-//       return bEngagement - aEngagement;
-//     });
-//     res.json(sortedTweets);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Error fetching tweets' });
-//   }
-// });
