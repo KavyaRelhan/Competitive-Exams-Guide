@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils";
@@ -82,7 +82,7 @@ function Signup() {
   };
 
   return (
-    <GoogleOAuthProvider clientId="228124437125-6df51bm90j6hsm4h1kpmrdm0fsh0j99g.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}>
       <div className="background">
         <Canvas />
         <div className="login-container">

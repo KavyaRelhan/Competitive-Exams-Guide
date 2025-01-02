@@ -7,6 +7,7 @@ import Canvas from "../components/Canvas";
 import axios from "axios";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
+
 function Login() {
   const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -88,7 +89,8 @@ function Login() {
     setIsPasswordVisible(!isPasswordVisible);
 
   return (
-    <GoogleOAuthProvider clientId="228124437125-6df51bm90j6hsm4h1kpmrdm0fsh0j99g.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}>
+
       <div className="background">
         <Canvas />
         <div className="login-container">
