@@ -34,7 +34,7 @@ function Signup() {
       return handleError("All the fields are required");
     }
     try {
-      const url = "http://localhost:8080/auth/signup";
+      const url = "https://competitive-exams-guide.onrender.com/auth/signup";
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -62,7 +62,7 @@ function Signup() {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;
-      const res = await axios.post("http://localhost:8080/auth/google-login", { token: credential });
+      const res = await axios.post("https://competitive-exams-guide.onrender.com/auth/google-login", { token: credential });
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.jwtToken);
