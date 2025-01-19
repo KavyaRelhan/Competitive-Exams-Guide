@@ -1,11 +1,11 @@
-html, body{
+html, body {
   margin: 0;
-  padding : 0;
+  padding: 0;
   width: 100%;
   box-sizing: border-box;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -15,15 +15,18 @@ html, body{
   gap: 150px; /* Keeps gaps between cards */
   padding: 30px;
   background-color: #f9fafb;
-  /* justify-content: center; */
-  width: 100%;  
+  width: 100%;
   box-sizing: border-box;
 }
 
-.exam-category-list{
-  max-width: 100%;
-  /* margin: 0; */
+.exams-directory.full-width {
+  justify-content: center; /* Center the content when sidebar is hidden */
 }
+
+.exam-category-list {
+  max-width: 100%;
+}
+
 .exam-category-list ul {
   list-style: none;
   padding: 0;
@@ -48,7 +51,6 @@ html, body{
   background-color: #dbeafe; /* Highlight on hover */
 }
 
-
 .exam-card {
   border: 1px solid #e5e7eb;
   padding: 20px;
@@ -57,8 +59,6 @@ html, body{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-bottom: 20px; /* Adds vertical gaps between cards */
-  /* flex: 1 1 calc(33.33% - 20px);  */
-  /* max-width: calc(33.33% - 20px);  */
 }
 
 .exam-card:hover {
@@ -87,13 +87,42 @@ html, body{
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }
+
 .exam-detail {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #ffffff;
 }
-/* ExamsDirectory.module.css */
+
+/* Search Bar Styling */
+.search-bar {
+  margin: 20px;
+  text-align: center;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .exams-directory {
     flex-direction: column; /* Stack cards vertically */
@@ -115,8 +144,8 @@ html, body{
   }
 
   .exam-card {
-    width: 100%; 
-    max-width: 100%; 
+    width: 100%;
+    max-width: 100%;
   }
 
   .exam-category-list {
@@ -124,4 +153,3 @@ html, body{
     padding: 15px;
   }
 }
-
