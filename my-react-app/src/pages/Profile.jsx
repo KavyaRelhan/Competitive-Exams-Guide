@@ -33,7 +33,7 @@ function Profile({isAuthenticated}) {
 
   const fetchFavorites = async (email) => {
     try {
-      const response = await axios.get('http://localhost:8080/auth/favorites', {
+      const response = await axios.get('https://competitive-exams-guide.onrender.com/auth/favorites', {
         params: { email },
       });
       setFavorites(response.data.favorites);
@@ -54,7 +54,7 @@ function Profile({isAuthenticated}) {
 
   const handleRemoveFavorite = async (url) => {
     try {
-      await axios.delete('http://localhost:8080/auth/favorites', {
+      await axios.delete('https://competitive-exams-guide.onrender.com/auth/favorites', {
         data: { email: loggedInUser, url },
       });
       setFavorites(favorites.filter((article) => article.url !== url));
