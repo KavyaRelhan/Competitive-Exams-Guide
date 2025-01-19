@@ -29,7 +29,7 @@ const LiveUpdates = () => {
       if (token) {
         console.log("FCM Token received:", token);
         // Send token to backend
-        axios.post('http://localhost:8080/api/save-token', { token, email });
+        axios.post('https://competitive-exams-guide.onrender.com/api/save-token', { token, email });
       }
     });
 
@@ -45,7 +45,7 @@ const LiveUpdates = () => {
   useEffect(() => {
     const fetchNews = async (keyword = '') => {
       try {
-        const response = await axios.get('http://localhost:8080/api/news', {
+        const response = await axios.get('https://competitive-exams-guide.onrender.com/api/news', {
           params: { keyword },
         });
         setNews(response.data);
@@ -73,7 +73,7 @@ const LiveUpdates = () => {
 
   const fetchFavorites = async (email) => {
     try {
-      const response = await axios.get('http://localhost:8080/auth/favorites', {
+      const response = await axios.get('https://competitive-exams-guide.onrender.com/auth/favorites', {
         params: { email },
       });
       setFavorites(response.data.favorites);
@@ -93,14 +93,14 @@ const LiveUpdates = () => {
 
       if (isFavorite) {
         // Remove from favorites
-        await axios.delete('http://localhost:8080/auth/favorites', {
+        await axios.delete('https://competitive-exams-guide.onrender.com/auth/favorites', {
           data: { email: userEmail, url: article.url },
         });
         setFavorites(favorites.filter((fav) => fav.url !== article.url));
         handleSuccess('Article removed from favorites!');
       } else {
         // Add to favorites
-        await axios.post('http://localhost:8080/auth/favorites', {
+        await axios.post('https://competitive-exams-guide.onrender.com/auth/favorites', {
           email: userEmail,
           article,
         });
