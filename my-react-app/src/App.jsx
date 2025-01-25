@@ -15,7 +15,6 @@ function App() {
   const PrivateRoute = ({element})=>{
     return isAuthenticated? element : <Navigate to="/login" />
   }
-  axios.defaults.withCredentials= true;
   return (
     <>
     <RefreshHandler setIsAuthenticated={setIsAuthenticated}/>
