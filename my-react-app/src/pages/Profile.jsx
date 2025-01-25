@@ -33,7 +33,7 @@ function Profile({isAuthenticated}) {
 
   const fetchFavorites = async (email) => {
     try {
-      const response = await axios.get('https://competitive-exams-guide.vercel.app/auth/favorites', {
+      const response = await axios.get('https://competitive-exams-guide-backend.vercel.app/auth/favorites', {
         params: { email },
       });
       setFavorites(response.data.favorites);
@@ -54,7 +54,7 @@ function Profile({isAuthenticated}) {
 
   const handleRemoveFavorite = async (url) => {
     try {
-      await axios.delete('https://competitive-exams-guide.vercel.app/auth/favorites', {
+      await axios.delete('https://competitive-exams-guide-backend.vercel.app/auth/favorites', {
         data: { email: loggedInUser, url },
       });
       setFavorites(favorites.filter((article) => article.url !== url));
