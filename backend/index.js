@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json())
 app.use(cors(
   {
-    origin:"https://competitive-exams-guide-frontend.vercel.app",
+    origin:"http://competitive-exams-guide-frontend.vercel.app",
     methods:["POST","GET"],
     credentials:true
   }
@@ -117,7 +117,7 @@ app.get('/api/news', async (req, res) => {
       const payload = JSON.stringify({
         title: 'New Articles Available!',
         body: `We found ${newArticles.length} new article(s) for you.`,
-        url: 'http://localhost:5173/home',
+        url: 'https://competitive-exams-guide-frontend.vercel.app/home',
       });
       
       // Send notifications to all users with subscriptions
