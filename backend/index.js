@@ -10,7 +10,13 @@ const UserModel = require('./Models/User')
 
 const app = express();
 app.use(bodyParser.json())
-app.use(cors());
+app.use(cors(
+  {
+    origin:"https://competitive-exams-guide-frontend.vercel.app",
+    methods:["POST","GET"],
+    credentials:true
+  }
+));
 app.use('/auth',AuthRouter);
 
 const PORT = process.env.PORT || 8080;
