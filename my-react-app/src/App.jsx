@@ -15,7 +15,6 @@ function App() {
   const PrivateRoute = ({element})=>{
     return isAuthenticated? element : <Navigate to="/login" />
   }
-
   return (
     <>
     <RefreshHandler setIsAuthenticated={setIsAuthenticated}/>

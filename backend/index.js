@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json())
 app.use(cors(
   {
-    origin:"https://competitive-exams-guide-frontend.vercel.app",
+    origin: ["https://competitive-exams-guide-frontend.vercel.app"],
     methods:["POST","GET"],
     credentials:true
   }
