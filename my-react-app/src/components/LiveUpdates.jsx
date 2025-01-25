@@ -39,7 +39,7 @@ const LiveUpdates = () => {
             .then((subscription) => {
               console.log('Push subscription:', subscription);
               // Send subscription to the backend
-              axios.post('http://localhost:8080/api/subscribe', { subscription, email });
+              axios.post('https://competitive-exams-guide.vercel.app/api/subscribe', { subscription, email });
             })
             .catch((error) => console.error('Push subscription failed:', error));
         })
@@ -50,7 +50,7 @@ const LiveUpdates = () => {
   useEffect(() => {
     const fetchNews = async (keyword = '') => {
       try {
-        const response = await axios.get('http://localhost:8080/api/news', {
+        const response = await axios.get('https://competitive-exams-guide.vercel.app/api/news', {
           params: { keyword },
         });
         setNews(response.data);
@@ -71,7 +71,7 @@ const LiveUpdates = () => {
 
   const fetchFavorites = async (email) => {
     try {
-      const response = await axios.get('http://localhost:8080/auth/favorites', {
+      const response = await axios.get('https://competitive-exams-guide.vercel.app/auth/favorites', {
         params: { email },
       });
       setFavorites(response.data.favorites);
@@ -91,14 +91,14 @@ const LiveUpdates = () => {
 
       if (isFavorite) {
         // Remove from favorites
-        await axios.delete('http://localhost:8080/auth/favorites', {
+        await axios.delete('https://competitive-exams-guide.vercel.app/auth/favorites', {
           data: { email: userEmail, url: article.url },
         });
         setFavorites(favorites.filter((fav) => fav.url !== article.url));
         handleSuccess('Article removed from favorites!');
       } else {
         // Add to favorites
-        await axios.post('http://localhost:8080/auth/favorites', {
+        await axios.post('http://competitive-exams-guide.vercel.app/auth/favorites', {
           email: userEmail,
           article,
         });
