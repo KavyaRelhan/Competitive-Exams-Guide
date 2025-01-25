@@ -17,7 +17,7 @@ function Login() {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;
-      const res = await axios.post("http://competitive-exams-guide.vercel.app/auth/google-login", {
+      const res = await axios.post("https://competitive-exams-guide.vercel.app/auth/google-login", {
         token: credential,
       });
 
@@ -49,7 +49,7 @@ function Login() {
     if (!email || !password)
       return handleError("All the parameters are required");
     try {
-      const response = await fetch("http://competitive-exams-guide.vercel.app/auth/login", {
+      const response = await fetch("https://competitive-exams-guide.vercel.app/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginInfo),
