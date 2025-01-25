@@ -50,7 +50,7 @@ const LiveUpdates = () => {
   useEffect(() => {
     const fetchNews = async (keyword = '') => {
       try {
-        const response = await axios.get('https://competitive-exams-guide.vercel-backend.app/api/news', {
+        const response = await axios.get('https://competitive-exams-guide-backend.vercel.app/api/news', {
           params: { keyword },
         });
         setNews(response.data);
