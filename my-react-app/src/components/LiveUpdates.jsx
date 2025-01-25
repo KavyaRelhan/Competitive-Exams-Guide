@@ -98,7 +98,7 @@ const LiveUpdates = () => {
         handleSuccess('Article removed from favorites!');
       } else {
         // Add to favorites
-        await axios.post('http://competitive-exams-guide.vercel.app/auth/favorites', {
+        await axios.post('https://competitive-exams-guide.vercel.app/auth/favorites', {
           email: userEmail,
           article,
         });
