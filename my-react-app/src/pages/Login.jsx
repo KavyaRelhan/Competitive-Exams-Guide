@@ -17,7 +17,7 @@ function Login() {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;
-      const res = await axios.post("http://localhost:8080/auth/google-login", {
+      const res = await axios.post("http://competitive-exams-guide.vercel.app/auth/google-login", {
         token: credential,
       });
 
@@ -38,19 +38,6 @@ function Login() {
     alert("Google Sign-In Failed");
   };
 
-  //   const exams = [
-  //     "JEE",
-  //     "NEET",
-  //     "UPSC",
-  //     "CAT",
-  //     "GATE",
-  //     "CLAT",
-  //     "SSC",
-  //     "IBPS",
-  //     "NDA",
-  //     "RAILWAY",
-  //   ];
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setLoginInfo((prev) => ({ ...prev, [name]: value }));
@@ -62,7 +49,7 @@ function Login() {
     if (!email || !password)
       return handleError("All the parameters are required");
     try {
-      const response = await fetch("http://localhost:8080/auth/login", {
+      const response = await fetch("http://competitive-exams-guide.vercel.app/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginInfo),
