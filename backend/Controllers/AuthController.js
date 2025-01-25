@@ -180,7 +180,26 @@ const removeFavorite = async (req, res) => {
         console.error(err);
         res.status(500).json({ message: "Internal server error", success: false });
     }
+    
 };
+const saveSubscription = async (req, res) => {
+    try {
+      const { email, subscription } = req.body;
+      const user = await UserModel.findOne({ email });
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found', success: false });
+      }
+  
+      user.pushSubscription = subscription;
+      await user.save();
+  
+      res.status(200).json({ message: 'Subscription saved!', success: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Internal server error', success: false });
+    }
+  };
 
 module.exports = {
     signup,
@@ -189,6 +208,7 @@ module.exports = {
     addFavorite,
     getFavorites,
     removeFavorite,
+    saveSubscription
 };
 
 // Updated authRouter.js

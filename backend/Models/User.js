@@ -27,6 +27,10 @@ const userSchema = new Schema({
            source: { type: Object },
        },
    ],
+   pushSubscription: {
+    type: Object, // Stores the subscription object
+    default: null, // Default value to handle users without a subscription
+  },
 })
 
 const userModel = mongoose.model('users', userSchema);

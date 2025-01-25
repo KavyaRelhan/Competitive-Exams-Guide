@@ -3,7 +3,6 @@ import axios from 'axios';
 import styles from '../styles/LiveUpdate.module.css';
 import { ToastContainer } from 'react-toastify';
 import { handleError, handleSuccess } from "../utils";
-import { requestForToken, onMessageListener } from '../util/firebase';
 
 const LiveUpdates = () => {
   const [news, setNews] = useState([]);
@@ -24,28 +23,34 @@ const LiveUpdates = () => {
       fetchFavorites(email);
     }
 
-    // Request FCM token on component mount
-    requestForToken().then((token) => {
-      if (token) {
-        console.log("FCM Token received:", token);
-        // Send token to backend
-        axios.post('https://competitive-exams-guide.onrender.com/api/save-token', { token, email });
-      }
-    });
+    // Register Service Worker for push notifications
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered:', registration);
 
-    // Listen for incoming messages
-    onMessageListener()
-      .then((payload) => {
-        console.log("Message received: ", payload);
-        setNotification(payload.notification);
-      })
-      .catch((err) => console.error("Failed to receive message:", err));
+          // Subscribe to push notifications
+          registration.pushManager
+            .subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: import.meta.env.VITE_VAPID_KEY,
+            })
+            .then((subscription) => {
+              console.log('Push subscription:', subscription);
+              // Send subscription to the backend
+              axios.post('http://localhost:8080/api/subscribe', { subscription, email });
+            })
+            .catch((error) => console.error('Push subscription failed:', error));
+        })
+        .catch((error) => console.error('Service Worker registration failed:', error));
+    }
   }, []);
 
   useEffect(() => {
     const fetchNews = async (keyword = '') => {
       try {
-        const response = await axios.get('https://competitive-exams-guide.onrender.com/api/news', {
+        const response = await axios.get('http://localhost:8080/api/news', {
           params: { keyword },
         });
         setNews(response.data);
@@ -64,16 +69,9 @@ const LiveUpdates = () => {
     return () => clearInterval(interval); // Clear interval on cleanup
   }, [selectedKeyword]);
 
-  useEffect(() => {
-    if (notification) {
-      const timer = setTimeout(() => setNotification(null), 5000); // Clear notification after 5 seconds
-      return () => clearTimeout(timer);
-    }
-  }, [notification]);
-
   const fetchFavorites = async (email) => {
     try {
-      const response = await axios.get('https://competitive-exams-guide.onrender.com/auth/favorites', {
+      const response = await axios.get('http://localhost:8080/auth/favorites', {
         params: { email },
       });
       setFavorites(response.data.favorites);
@@ -93,14 +91,14 @@ const LiveUpdates = () => {
 
       if (isFavorite) {
         // Remove from favorites
-        await axios.delete('https://competitive-exams-guide.onrender.com/auth/favorites', {
+        await axios.delete('http://localhost:8080/auth/favorites', {
           data: { email: userEmail, url: article.url },
         });
         setFavorites(favorites.filter((fav) => fav.url !== article.url));
         handleSuccess('Article removed from favorites!');
       } else {
         // Add to favorites
-        await axios.post('https://competitive-exams-guide.onrender.com/auth/favorites', {
+        await axios.post('http://localhost:8080/auth/favorites', {
           email: userEmail,
           article,
         });
