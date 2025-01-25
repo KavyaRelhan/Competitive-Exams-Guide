@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const mongo_url = process.env.MONGO_URI;
 
-mongoose.connect('mongodb://localhost:27017/authdb')
+mongoose.connect(mongo_url)
     .then(()=>{
         console.log('Mongodb connected...')
     }).catch((err)=>{
@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/authdb')
 // const connectDB = (MONGO_URI)=>{
 //     return mongoose.connect(MONGO_URI)
 // } 
+
 
 
 
