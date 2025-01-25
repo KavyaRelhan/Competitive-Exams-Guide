@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 app.use(cors(
   {
     origin: ["https://competitive-exams-guide-frontend.vercel.app"],
-    methods:["POST","GET"],
+    methods:["POST","GET","DELETE"],
     credentials:true
   }
 ));
