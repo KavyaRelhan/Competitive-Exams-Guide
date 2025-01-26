@@ -107,7 +107,7 @@ const LiveUpdates = () => {
       }
     } catch (error) {
       console.error('Error toggling favorite:', error);
-      handleError('Failed to update favorites. Please try again later.');
+      handleError('Failed to update favorites.Did you Login? ');
     }
   };
 
