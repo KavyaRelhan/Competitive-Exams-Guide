@@ -17,6 +17,7 @@ function Login() {
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
       const { credential } = credentialResponse;
+      console.log("Google Credential:", credential);
       const res = await axios.post("https://competitive-exams-guide-backend.vercel.app/auth/google-login", {
         token: credential,
       });
@@ -29,6 +30,7 @@ function Login() {
       }
     } catch (error) {
       console.error(error);
+      console.error("Google Login Error:", error);
       alert("Google Login Failed!");
     }
   };
@@ -76,7 +78,9 @@ function Login() {
     setIsPasswordVisible(!isPasswordVisible);
 
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}
+      redirectUri="https://competitive-exams-guide-frontend.vercel.app"
+      >
 
       <div className="background">
         <Canvas />
