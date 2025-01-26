@@ -24,7 +24,7 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
         <Route path='/profile' element={<PrivateRoute element={<Profile  isAuthenticated={isAuthenticated}/>}/>}/>
         <Route path='/exam-directory' element={<ExamsDirectory isAuthenticated={isAuthenticated}/>}/>
-        <Route path='/home' element={<Homepage isAuthenticated={isAuthenticated} />}/>
+        <Route path='/home' element={<Homepage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated}/>}/>
         {/* <Route path='/profile' element={<Profile/>} /> */}
       </Routes>
     </>
