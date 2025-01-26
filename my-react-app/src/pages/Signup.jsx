@@ -82,7 +82,10 @@ function Signup() {
   };
 
   return (
-    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}>
+    <GoogleOAuthProvider clientId={import.meta.env.VITE_SOME_KEY}
+        redirectUri="https://competitive-exams-guide-frontend.vercel.app"
+
+      >
       <div className="background">
         <Canvas />
         <div className="login-container">
