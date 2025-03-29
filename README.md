@@ -98,7 +98,7 @@ exam-guide/
 ## 📸 UI Screenshots
 ### 📌 Home Page
 ![Home Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/HomePage.png)
-
+### 📌 Login Page
 ![Login/Signup Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/LoginPage.jpeg)
 
 ## 🤝 Contribution Guidelines
