@@ -23,19 +23,18 @@ The **Competitive Exam Guide** is a MERN stack-based web application that provid
 ### 📌 Prerequisites
 - Node.js (v18+)
 - MongoDB installed locally or a MongoDB Atlas account
-- Firebase Project (if using Firebase for authentication and notifications)
 
 ### 📥 Installation & Setup
 #### 1️⃣ Clone the repository
 ```sh
-git clone https://github.com/your-username/exam-guide.git
-cd exam-guide
+git clone https://github.com/KavyaRelhan/Competitive-Exams-Guide.git
+cd Competitive-Exams-Guide
 ```
 #### 2️⃣ Install dependencies
 ```sh
-cd client
+cd my-react-app
 npm install
-cd ../server
+cd ../backend
 npm install
 ```
 #### 3️⃣ Set up environment variables
@@ -44,16 +43,15 @@ Create a `.env` file and add the following:
 MONGO_URI=your_mongo_database_url
 JWT_SECRET=your_secret_key
 NEWS_API_KEY=your_news_api_key
-FIREBASE_API_KEY=your_firebase_api_key
 ```
 #### 4️⃣ Start the backend server
 ```sh
-cd server
+cd backend
 npm start
 ```
 #### 5️⃣ Start the frontend
 ```sh
-cd client
+cd my-react-app
 npm start
 ```
 
@@ -99,7 +97,7 @@ exam-guide/
 
 ## 📸 UI Screenshots
 ### 📌 Home Page
-![Home Page](screenshots/home.png)
+![Home Page](file:///C:/Users/prate/OneDrive/Pictures/Screenshots/home.png)
 
 ## 🤝 Contribution Guidelines
 Contributions are welcome! Please follow these steps:
@@ -110,7 +108,7 @@ Contributions are welcome! Please follow these steps:
 
 ## 📬 Contact
 📌 **GitHub**: [KavyaRelhan](https://github.com/KavyaRelhan)
-📌 **Email**: boy118141@gmail.com
+📌 **Email**: boy118141@gmail.com, relhankavya123@gmail.com
 
 ---
 ### ⭐ Don't forget to **star** the repo if you like it! 🚀
