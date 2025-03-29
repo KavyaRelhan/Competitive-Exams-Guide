@@ -97,8 +97,9 @@ exam-guide/
 
 ## 📸 UI Screenshots
 ### 📌 Home Page
-![Home Page](file:///C:/Users/prate/OneDrive/Pictures/Screenshots/home.png)
 ![Home Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/HomePage.png)
+
+![Login/Signup Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/LoginPage.jpeg)
 
 ## 🤝 Contribution Guidelines
 Contributions are welcome! Please follow these steps:
