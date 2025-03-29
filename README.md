@@ -11,7 +11,7 @@ The **Competitive Exam Guide** is a MERN stack-based web application that provid
 - **Google Login:** Secure authentication via Google Sign-In.
 
 ## 🛠 Tech Stack
-- **Frontend:** React.js, Redux, Tailwind CSS
+- **Frontend:** React.js, Redux
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose
 - **Authentication:** Firebase/Google OAuth
@@ -98,6 +98,7 @@ exam-guide/
 ## 📸 UI Screenshots
 ### 📌 Home Page
 ![Home Page](file:///C:/Users/prate/OneDrive/Pictures/Screenshots/home.png)
+![Home Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/HomePage.png)
 
 ## 🤝 Contribution Guidelines
 Contributions are welcome! Please follow these steps:
