@@ -17,8 +17,8 @@ The **Competitive Exam Guide** is a MERN stack-based web application that provid
 - **Frontend:** React.js
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose
-- **Authentication:** Firebase/Google OAuth
-- **Notifications:** Web Push Notifications (Firebase Cloud Messaging or other services)
+- **Authentication:** JWT and Google OAuth
+- **Notifications:** Web Push Notifications (Web Push API)
 - **News API:** Integrated to fetch live news updates
 
 ## 🔧 How to Start on Localhost
