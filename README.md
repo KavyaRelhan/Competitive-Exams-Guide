@@ -1,6 +1,6 @@
 # 📌 Competitive Exam Guide - MERN Stack Web Application
 
-## 🔗 Link to hosted website
+## 🔗 Website live hosted at
 https://competitive-exams-guide-frontend.vercel.app/
 
 ## 📖 About
@@ -14,7 +14,7 @@ The **Competitive Exam Guide** is a MERN stack-based web application that provid
 - **Google Login:** Secure authentication via Google Sign-In.
 
 ## 🛠 Tech Stack
-- **Frontend:** React.js, Redux
+- **Frontend:** React.js
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB, Mongoose
 - **Authentication:** Firebase/Google OAuth
@@ -105,15 +105,8 @@ exam-guide/
 ## 📸 UI Screenshots
 ### 📌 Home Page
 ![Home Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/HomePage.png)
-### 📌 Login Page
-![Login/Signup Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/LoginPage.jpeg)
-
-## 🤝 Contribution Guidelines
-Contributions are welcome! Please follow these steps:
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature-branch`)
-3. Make your changes and commit (`git commit -m "Added new feature"`)
-4. Push to your fork and create a Pull Request
+### 📌 Signup Page
+![Signup Page](https://github.com/KavyaRelhan/Competitive-Exams-Guide/blob/main/Signup%20Page.png)
 
 ## 📬 Contact
 📌 **GitHub**: [KavyaRelhan](https://github.com/KavyaRelhan)
