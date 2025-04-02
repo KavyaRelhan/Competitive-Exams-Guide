@@ -1,5 +1,8 @@
 # 📌 Competitive Exam Guide - MERN Stack Web Application
 
+## 🔗 Link to hosted website
+https://competitive-exams-guide-frontend.vercel.app/
+
 ## 📖 About
 The **Competitive Exam Guide** is a MERN stack-based web application that provides users with real-time exam-related news updates. It features an exam directory for structured information on various competitive exams, a favorites section for saving news, push notifications for new articles, and Google authentication.
 
@@ -22,7 +25,7 @@ The **Competitive Exam Guide** is a MERN stack-based web application that provid
 
 ### 📌 Prerequisites
 - Node.js (v18+)
-- MongoDB installed locally or a MongoDB Atlas account
+- MongoDB Atlas account
 
 ### 📥 Installation & Setup
 #### 1️⃣ Clone the repository
@@ -40,9 +43,13 @@ npm install
 #### 3️⃣ Set up environment variables
 Create a `.env` file and add the following:
 ```env
+PORT=port
 MONGO_URI=your_mongo_database_url
 JWT_SECRET=your_secret_key
 NEWS_API_KEY=your_news_api_key
+GOOGLE_CLIENT_ID=your_google_client_id
+VAPID_PUBLIC_KEY=your_public_vapid_key
+VAPID_PRIVATE_KEY=your_private_vapid_key
 ```
 #### 4️⃣ Start the backend server
 ```sh
